@@ -16,21 +16,21 @@ function ListGroup() {
   return (
     <>
       <h1 className="">Todo</h1>
-      <div className=" input-group mb-2 shadow">
+      <div className=" input-group mb-3 shadow-lg">
         <input
           type="text"
-          className=" form-control"
+          className=" form-control py-3"
           placeholder="Enter a task"
         />{" "}
-        <input type="button" value="Add" className="btn bg-secondary-subtle" />
+        <input type="button" value="Add" className="btn bg-success-subtle" />
       </div>
-      <ul className="list-group">
+      <ul className="list-group shadow">
         {tasks.map((item, index) => (
-          <li className="list-group-item">
-            <span className="py-">
+          <li className="list-group-item py-3">
+            <span className="">
               {item.charAt(0).toUpperCase() + item.substring(1)}
             </span>
-            <span className="float-end btn btn-danger m-0 p-0 px-1">
+            <span className="float-end btn bg-danger-subtle m-0 p-0 px-1">
               <span
                 className="btn btn-close p-0 m-0"
                 onClick={() => handleDeleteTask(index)}
