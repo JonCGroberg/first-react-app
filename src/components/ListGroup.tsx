@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function ListGroup() {
   const [tasks, setTasks] = useState([
@@ -9,10 +9,16 @@ function ListGroup() {
     "item5",
     "item6",
   ]);
+  const [newTask,setNewTask] = useState("")
 
   function handleDeleteTask(index: number) {
     setTasks(tasks.filter((_, i) => i !== index));
   }
+
+  function handleNewTask(e){
+    setNewTask("")
+  }
+
   return (
     <>
       <h1 className="">Todo</h1>
@@ -20,9 +26,10 @@ function ListGroup() {
         <input
           type="text"
           className=" form-control py-3"
+          value={newTask}
           placeholder="Enter a task"
         />{" "}
-        <input type="button" value="Add" className="btn bg-success-subtle" />
+        <input type="button" value="Add" className="btn bg-success-subtle" onClick={()=>handleNewTask} onChange={(e) => setNewTask(e.target.value)}/>
       </div>
       <ul className="list-group shadow">
         {tasks.map((item, index) => (
