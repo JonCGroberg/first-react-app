@@ -15,8 +15,8 @@ function ListGroup() {
     setTasks(tasks.filter((_, i) => i !== index));
   }
 
-  function handleNewTask(e){
-    setNewTask("")
+  function handleNewTask(){
+    setTasks([...tasks,newTask])
   }
 
   return (
@@ -28,8 +28,9 @@ function ListGroup() {
           className=" form-control py-3"
           value={newTask}
           placeholder="Enter a task"
+          onChange={(e) => setNewTask(e.target.value)}
         />{" "}
-        <input type="button" value="Add" className="btn bg-success-subtle" onClick={()=>handleNewTask} onChange={(e) => setNewTask(e.target.value)}/>
+        <input type="button" value="Add" className="btn bg-success-subtle" onClick={()=>handleNewTask()} />
       </div>
       <ul className="list-group shadow">
         {tasks.map((item, index) => (
