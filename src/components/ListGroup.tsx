@@ -1,9 +1,7 @@
 import { MouseEvent, useState } from "react";
 import {
-  Check,
   CheckSquare,
   PencilFill,
-  Plus,
   Square,
   Trash3Fill,
 } from "react-bootstrap-icons";
@@ -19,32 +17,34 @@ function ListGroup() {
     setTasks(tasks.filter((_, i) => i !== index));
   }
 
-  function handleNewTask(e) {
+  function handleNewTask(
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) {
     e.preventDefault();
     const newT = { task: newTask, done: false, edit: false };
     if (newTask != "") setTasks([...tasks, newT]);
     setNewTask("");
   }
 
-  function handleTaskStatus(index) {
-    let t = tasks;
+  function handleTaskStatus(index: number) {
+    const t = tasks;
     t[index].done = flip(t[index].done);
     setTasks([...t]);
   }
 
-  function handleEditButton(index) {
-    let t = tasks;
+  function handleEditButton(index: number) {
+    const t = tasks;
     t[index].edit = flip(t[index].edit);
     setTasks([...t]);
   }
 
-  function handleEditTask(index,target) {
-    let t = tasks;
+  function handleEditTask(index: number, target: string) {
+    const t = tasks;
     t[index].task = target;
-    setTasks([...t])
+    setTasks([...t]);
   }
 
-  function flip(bool) {
+  function flip(bool: boolean) {
     return bool ? false : true;
   }
   return (
@@ -78,19 +78,20 @@ function ListGroup() {
                   {taskItem.done ? <CheckSquare /> : <Square />}
                 </span>
               </span>
-              <span className=" text-start d-block w-100 mx-3">
+              <form className=" text-start d-block w-100 mx-3">
                 {taskItem.edit ? (
                   <input
                     type="text"
                     className="form-control py-0 "
                     value={taskItem.task}
-                    onChange={(e) => handleEditTask(index,e.target.value)}
+                    onChange={(e) => handleEditTask(index, e.target.value)}
+                    onSubmit={() => handleEditButton(index)}
                   ></input>
                 ) : (
                   taskItem.task.charAt(0).toUpperCase() +
                   taskItem.task.substring(1)
                 )}
-              </span>
+              </form>
 
               <span
                 className="btn p-0 m-0 px-1 ms-1"
