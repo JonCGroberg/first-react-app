@@ -7,7 +7,7 @@ function App() {
     <>
       <NavBar></NavBar>
       <div className="px-5">
-        <ListGroup></ListGroup>
+       <ListGroup></ListGroup>
       </div>
     </>
   );

@@ -5,3 +5,9 @@
 .checkbox:hover{
     cursor: pointer;
 }
+
+
+.done *{
+    color:#FFFFFF33;
+    text-decoration-line:line-through;
+}
